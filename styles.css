@@ -30,14 +30,14 @@ body {
 
 }
 
-.option-btn {
+button {
     height: 28px;
     width: 28px;
     display: grid;
     place-items: center;
     border-radius: 3px;
     border: none;
-    background-color: transparent;
+    background-color: #fff;
     outline: none;
     color: #020929;
     cursor: pointer;
@@ -85,4 +85,8 @@ input[type = color]::-moz-color-swatch {
 .input-wrapper label {
     color: #020929;
     font-size: 14px;
+}
+
+.active {
+    background-color: #e9e9ff;
 }
