@@ -90,3 +90,7 @@ input[type = color]::-moz-color-swatch {
 .active {
     background-color: #e9e9ff;
 }
+
+#text-input {
+    color: #020929;
+}

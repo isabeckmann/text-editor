@@ -1,7 +1,6 @@
 let optionsButtons = document.querySelectorAll(".option-btn");
 let advancedOptionBtn = document.querySelectorAll(".adv-option-btn");
 let fontName = document.getElementById("fontName");
-let fontSizeRef = document.getElementById("fontSize");
 let writtingArea = document.getElementById("text-input");
 let createLink = document.getElementById("createLink");
 let alignButtons = document.querySelectorAll(".align");
@@ -23,16 +22,34 @@ const initialazer = () => {
         option.innerHTML = value;
         fontName.appendChild(option);
     })
-
-    for (let i = 1; 1 <= 7; i++) {
-        let option = document.createElement("option");
-        option.value = i;
-        option.innerHTML = i;
-        fontSizeRef.appendChild(option);
-    }
-
-    fontSizeRef.value = 3;
 };
+
+const modifyText = (command, defaultUi, value) => {
+    document.execCommand(command, defaultUi, value);
+}
+
+optionsButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        modifyText(button.id, false, null)
+    })
+})
+
+advancedOptionBtn.forEach(button => {
+    button.addEventListener("click", () => {
+        modifyText(button.id, false, button.value)
+    })
+})
+
+createLink.addEventListener('click', () => {
+    let userLink = prompt("Enter a URL");
+
+    if(/http/i.test(userLink)) {
+        modifyText(createLink.id, false, userLink)
+    } else {
+        userLink = "http://" + userLink;
+        modifyText(createLink.id, false, userLink)
+    }
+})
 
 const highlighter = (className, needsRemoval) => {
     className.forEach((button) => {
